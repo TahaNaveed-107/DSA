@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <h1>Palindrme Check</h1>
+  <body>
+    <input
+      type="text"
+      id="textInput"
+      placeholder="Enter Numbers sperated by commas"
+    />
+  <body>
+    <button onclick="textManipulation.checkPalindrome()">Check Palindrome</button>
+    <script>
+      console.log("hello");
+      const textManipulation = {
+          text:[],
+        checkPalindrome : function(){
+            let input = document.getElementById("textInput").value;
+            let cleanedInput = input.replace(/\s+/g, '').toLowerCase();
+            this.text = cleanedInput.split("");
+            let reverseText = [...this.text].reverse()
+            let end  = reverseText.length;
+            for (let start = 0 ;start<end;start++){
+                if (this.text[start] !== reverseText[start]){
+                    console.log("Not Palindrome")
+                    return
+                }
+            }
+            console.log("Palindrome")
+        }
+      }
+        </script>
+  </body>
+</html>

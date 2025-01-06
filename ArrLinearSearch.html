@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <h1>Search From Array</h1>
+  <body>
+    <input
+      type="text"
+      id="textInput"
+      placeholder="Enter Numbers sperated by commas"
+    />
+    <input
+      type="text"
+      id="toSearch"
+      placeholder="Number to Find?"
+    />
+  <body>
+      <button onclick="linearSearch()">Search</button>
+      <script>
+      console.log("hello");
+      function linearSearch(){
+          let input = document.getElementById("textInput").value;
+          let arr = input.split(",").map((item)=>{
+              return parseInt(item)
+            }) 
+            let tosearch = parseInt(document.getElementById("toSearch").value);
+            console.log(tosearch);
+            let highestNum = null ;
+            let indices = [];
+            for (let i = 0;i <= arr.length ;i++){
+                if (arr[i] > highestNum ){
+                    highestNum = arr[i]
+                    indices = [i]
+                }
+                else if (arr[i] === highestNum){
+                    indices.push(i)
+                }            
+            }
+            console.log("Highest Number: " , highestNum)
+            console.log("Apperences " ,indices)
+            console.log("to search Value " ,tosearch)
+      }
+        </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="arrayInput"
+      placeholder="Enter Numbers sperated by commas"
+    />
+    <button onclick="inputHandler.getOriginal()">Submit</button>
+  <body>
+    <button onclick="inputHandler.getReverse()">get Reversed Array</button>
+    <script>
+      console.log("hello");
+
+      const inputHandler = {
+        newArr : [],
+        
+        getOriginal: function() {
+          let input = document.getElementById("arrayInput").value;
+
+        this.arr = input.split(",").map((item) => {
+          return parseInt(item.trim());
+        });
+
+        console.log("Original Array: ",this.arr);
+      },
+      
+          getReverse: function () {
+            let reversedArr = []
+            for(let i = this.arr.length - 1; i >= 0; i-- ){
+              reversedArr.push(this.arr[i]);
+            }
+            console.log("Reversed Array", reversedArr)
+          },
+          
+        }
+
+        </script>
+  </body>
+</html>
