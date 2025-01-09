@@ -18,30 +18,64 @@
       placeholder="Number to Find?"
     />
   <body>
-      <button onclick="linearSearch()">Search</button>
+      <button onclick="binarySearch()">Search</button>
       <script>
       console.log("hello");
       function linearSearch(){
+        let flag = false;
           let input = document.getElementById("textInput").value;
           let arr = input.split(",").map((item)=>{
               return parseInt(item)
             }) 
             let tosearch = parseInt(document.getElementById("toSearch").value);
             console.log(tosearch);
-            let highestNum = null ;
-            let indices = [];
-            for (let i = 0;i <= arr.length ;i++){
-                if (arr[i] > highestNum ){
-                    highestNum = arr[i]
-                    indices = [i]
-                }
-                else if (arr[i] === highestNum){
-                    indices.push(i)
-                }            
+            for (let i = 0; i < arr.length; i++) {
+              if (arr[i] === tosearch) {
+                flag = true;
+                console.log("Number Found", "At Index : ", i);
+                break;
+              }
             }
-            console.log("Highest Number: " , highestNum)
-            console.log("Apperences " ,indices)
-            console.log("to search Value " ,tosearch)
+            if (!flag){
+              console.log("Number Not found")
+            }
+      }
+
+      function binarySearch(){
+        let input = document.getElementById("textInput").value;
+        let arr = input.split(",").map((item)=>{
+          return parseInt(item);
+        })
+        let tosearch = parseInt(document.getElementById("toSearch").value);
+        let array = [...arr].sort((a,b)=>{
+          return a - b;
+        })
+
+        let left = 0;
+        let right = array.length - 1;
+        let mid = Math.floor((left + right)/2);
+        let found = false
+        
+        while(left<=right){
+          if ( tosearch < array[mid] ){
+          right = mid - 1;
+          mid = Math.floor((left + right)/2);
+        }
+        else if (tosearch > array[mid]){
+          left = mid + 1;
+          mid = Math.floor((left + right)/2);
+        }
+        else if (tosearch === array[mid]){
+          console.log(array)
+          console.log("Found Match At Index: ", mid)
+          found = true
+          break;
+        }
+      }
+
+      if(!found) {
+        console.log("Found No Match")
+      }
       }
         </script>
   </body>
